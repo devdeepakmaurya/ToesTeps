@@ -1,4 +1,4 @@
-# Kiln & Loom: Flask e-commerce starter
+# ToesTeps: Flask e-commerce starter
 
 Frontend: HTML, CSS, vanilla JavaScript. Backend: Flask with SQLAlchemy, using SQLite locally and PostgreSQL when `DATABASE_URL` is configured.
 
