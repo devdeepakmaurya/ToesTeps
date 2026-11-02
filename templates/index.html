@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kiln &amp; Loom: pots, plates and woven things</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="ecommerce\ecommerce\static\css\style.css"
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="/">Kiln &amp; Loom</a>
+    <label class="search">
+      <span class="visually-hidden">Search products</span>
+      <input id="search" type="search" placeholder="Search mugs, vases, throws" autocomplete="off">
+    </label>
+    <button id="open-cart" class="cart-btn" type="button">
+      Cart <span id="cart-count" class="cart-count">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Pots, plates and woven things for daily use.</h1>
+      <p>Made in small batches. Shipped within three days.</p>
+    </section>
+
+    <section class="toolbar" aria-label="Filter products">
+      <div id="categories" class="categories" role="group" aria-label="Category"></div>
+      <label class="sort">
+        <span>Sort</span>
+        <select id="sort">
+          <option value="featured">Featured</option>
+          <option value="price_asc">Price, low to high</option>
+          <option value="price_desc">Price, high to low</option>
+          <option value="name">Name</option>
+        </select>
+      </label>
+    </section>
+
+    <p id="status" class="status" role="status"></p>
+    <section id="grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Kiln &amp; Loom. A demo store built with Flask.</p>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div id="overlay" class="overlay" hidden></div>
+  <aside id="cart" class="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Your cart</h2>
+      <button id="close-cart" class="text-btn" type="button">Close</button>
+    </div>
+    <ul id="cart-items" class="cart-items"></ul>
+    <div class="drawer-foot">
+      <div class="total-row"><span>Total</span><strong id="cart-total">0</strong></div>
+      <button id="checkout-btn" class="primary" type="button">Check out</button>
+    </div>
+  </aside>
+
+  <!-- Checkout dialog -->
+  <dialog id="checkout">
+    <form id="checkout-form" method="dialog" novalidate>
+      <h2>Delivery details</h2>
+      <label>Full name <input name="name" autocomplete="name" required></label>
+      <label>Email <input name="email" type="email" autocomplete="email" required></label>
+      <label>Delivery address <textarea name="address" rows="3" autocomplete="street-address" required></textarea></label>
+      <p id="form-error" class="form-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" id="cancel-checkout" class="text-btn">Back to cart</button>
+        <button type="submit" class="primary">Place order <span id="order-total"></span></button>
+      </div>
+    </form>
+    <div id="confirmation" class="confirmation" hidden>
+      <h2>Order placed</h2>
+      <p>Your order number is <strong id="order-id"></strong>. Keep it for your records.</p>
+      <button type="button" id="done-btn" class="primary">Keep shopping</button>
+    </div>
+  </dialog>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
