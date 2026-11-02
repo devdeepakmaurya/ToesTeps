@@ -1,2 +1,4 @@
 Flask>=3.0
+SQLAlchemy>=2.0
 gunicorn>=23.0; platform_system != "Windows"
+psycopg[binary]>=3.2; platform_system != "Windows"
